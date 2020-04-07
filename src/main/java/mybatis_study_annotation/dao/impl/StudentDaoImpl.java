@@ -33,4 +33,14 @@ public class StudentDaoImpl implements StudentDao {
 		return sqlSession.selectList(namespace + ".selectStudentByAll");
 	}
 
+	@Override
+	public int insertStudent(Student student) {
+		return sqlSession.insert(namespace + ".insertStudent", student);
+	}
+
+	@Override
+	public int insertStudentAutoInc(Student student) {
+		return sqlSession.insert(namespace + ".insertStudentAutoInc", student);
+	}
+
 }
