@@ -1,6 +1,7 @@
 package mybatis_study_annotation.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -51,6 +52,26 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public int deleteStudent(int studId) {
 		return sqlSession.delete(namespace + ".deleteStudent", studId);
+	}
+
+	@Override
+	public List<Student> selectStudentByAllForResults() {
+		return sqlSession.selectList(namespace + ".selectStudentByAllForResults");
+	}
+
+	@Override
+	public List<Map<String, Object>> selectStudentByAllForResultsMap() {
+		return sqlSession.selectList(namespace + ".selectStudentByAllForResultsMap");
+	}
+
+	@Override
+	public List<Student> selectStudentByAllForMapper() {
+		return sqlSession.selectList(namespace + ".selectStudentByAllForMapper");
+	}
+
+	@Override
+	public List<Student> selectStudentByAllForResultMapExt() {
+		return sqlSession.selectList(namespace + ".selectStudentByAllForResultMapExt");
 	}
 
 }
