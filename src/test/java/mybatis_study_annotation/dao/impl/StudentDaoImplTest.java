@@ -83,4 +83,20 @@ public class StudentDaoImplTest extends AbstractTest{
         int res = dao.insertStudentAutoInc(student);
         Assert.assertEquals(1, res);
     }
+    
+    @Test
+    public void test05UpdateStudent() {
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+        Calendar newDate = GregorianCalendar.getInstance();
+        newDate.set(2000, 4, 28);
+        Student student = new Student();
+        student.setStudId(5);
+        student.setName("홍길동5");
+        student.setEmail("hong@test.co.kr");
+        student.setPhone(new PhoneNumber("010-1111-2222"));
+        student.setDob(newDate.getTime());
+        int res = dao.updateStudent(student);
+        Assert.assertEquals(1, res);
+    }
+
 }

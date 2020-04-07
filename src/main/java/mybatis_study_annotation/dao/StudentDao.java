@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import mybatis_study_annotation.dto.Student;
 
@@ -21,5 +22,8 @@ public interface StudentDao {
     @Insert("INSERT INTO STUDENTS(STUD_ID, NAME, EMAIL, PHONE, DOB) VALUES(#{studId}, #{name}, #{email}, #{phone}, #{dob})")
     @Options(useGeneratedKeys=true, keyProperty="studId")
     int insertStudentAutoInc(Student student);
+
+    @Update("update students set name=#{name}, email=#{email}, phone=#{phone} where stud_id=#{studId}")
+    int updateStudent(Student student);
 
 }

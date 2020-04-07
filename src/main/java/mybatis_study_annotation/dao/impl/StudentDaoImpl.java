@@ -43,4 +43,9 @@ public class StudentDaoImpl implements StudentDao {
 		return sqlSession.insert(namespace + ".insertStudentAutoInc", student);
 	}
 
+	@Override
+	public int updateStudent(Student student) {
+		return sqlSession.update(namespace + ".updateStudent", student);
+	}
+
 }
