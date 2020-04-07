@@ -2,6 +2,7 @@ package mybatis_study_annotation.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
@@ -25,5 +26,8 @@ public interface StudentDao {
 
     @Update("update students set name=#{name}, email=#{email}, phone=#{phone} where stud_id=#{studId}")
     int updateStudent(Student student);
+
+    @Delete("delete from students where stud_id=#{studId}")
+    int deleteStudent(int studId);
 
 }
