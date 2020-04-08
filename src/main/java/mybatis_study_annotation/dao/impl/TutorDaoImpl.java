@@ -1,5 +1,8 @@
 package mybatis_study_annotation.dao.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import mybatis_study_annotation.dao.TutorDao;
@@ -29,6 +32,21 @@ public class TutorDaoImpl implements TutorDao {
 	@Override
 	public Tutor selectTutorByTutorId(Tutor tutor) {
 		return sqlSession.selectOne(namespace + ".selectTutorByTutorId", tutor);
+	}
+
+	@Override
+	public List<Tutor> selectAllTutorsProv() {
+		return sqlSession.selectList(namespace + ".selectAllTutorsProv");
+	}
+
+	@Override
+	public List<Tutor> selectTutorProv(Map<String, Object> map) {
+	    return sqlSession.selectList(namespace + ".selectTutorProv", map);
+	}
+
+	@Override
+	public List<Tutor> selectTutorByJoinProv(Map<String, Object> map) {
+		return sqlSession.selectList(namespace + ".selectTutorByJoinProv", map);
 	}
 
 }

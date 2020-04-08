@@ -1,13 +1,18 @@
 package mybatis_study_annotation.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
 
 import mybatis_study_annotation.dto.Tutor;
+import mybatis_study_annotation.providers.TutorProvider;
 
 public interface TutorDao {
 	@Select("select tutor_id, name as tutor_name, email, addr_id from tutors where tutor_id=#{tutorId}")
@@ -25,4 +30,15 @@ public interface TutorDao {
 			+ "where t.tutor_id=#{tutorId}")
 	@ResultMap("mappers.TutorMapper.TutorResult")
 	Tutor selectTutorByTutorId(Tutor tutor);
+	
+	/* 동적 SQL (@SelectProvider) */
+	@SelectProvider(type = TutorProvider.class, method = "selectAllTutorProv")
+	List<Tutor> selectAllTutorsProv();
+
+	@SelectProvider(type = TutorProvider.class, method = "selectTutorProv")
+	List<Tutor> selectTutorProv(Map<String, Object> map);
+
+	@SelectProvider(type = TutorProvider.class, method = "selectTutorByJoinProv")
+	List<Tutor> selectTutorByJoinProv(Map<String, Object> map);
+
 }

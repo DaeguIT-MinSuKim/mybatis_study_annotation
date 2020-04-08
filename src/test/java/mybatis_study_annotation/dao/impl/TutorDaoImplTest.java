@@ -1,5 +1,9 @@
 package mybatis_study_annotation.dao.impl;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -52,5 +56,46 @@ public class TutorDaoImplTest extends AbstractTest {
         Assert.assertNotNull(selTutor);
         log.trace(selTutor.toString());
     }
+
+    @Test
+    public void test03SelectAllTutorsProv() {
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+        List<Tutor> lists = dao.selectAllTutorsProv();
+        Assert.assertNotNull(lists);
+        for(Tutor t : lists) log.trace(t.toString());
+    }
+
+    @Test
+    public void test04SelectTutorProv() {
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+        Map<String, Object> map = null;
+        List<Tutor> lists = dao.selectTutorProv(map);
+        for(Tutor t : lists) log.trace(t.toString());
+
+        map = new HashMap<>();
+        map.put("tutorId", 1);
+
+        lists = dao.selectTutorProv(map);
+        Assert.assertNotNull(lists);
+        for(Tutor t : lists) log.trace(t.toString());
+    }
+
+    @Test
+    public void test05SelectTutorByJoinProv() {
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+        Map<String, Object> map = null;
+        List<Tutor> lists = dao.selectTutorByJoinProv(map);
+        for(Tutor t : lists) log.trace(t.toString());
+
+        map = new HashMap<>();
+        map.put("tutorId", 1);
+        lists = dao.selectTutorByJoinProv(map);
+        for(Tutor t : lists) log.trace(t.toString());
+
+        map.put("addrId", 1);
+        lists = dao.selectTutorByJoinProv(map);
+        Assert.assertNotNull(lists);
+        for(Tutor t : lists) log.trace(t.toString());
+    } 
 
 }
