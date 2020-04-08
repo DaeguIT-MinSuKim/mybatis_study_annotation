@@ -1,7 +1,10 @@
 package mybatis_study_annotation.dao.impl;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.ibatis.session.SqlSession;
 import org.junit.AfterClass;
@@ -13,6 +16,7 @@ import org.junit.runners.MethodSorters;
 
 import mybatis_study_annotation.AbstractTest;
 import mybatis_study_annotation.dto.Course;
+import mybatis_study_annotation.dto.CourseStat;
 import mybatis_study_annotation.jdbc.MyBatisSqlSessionFactory;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -67,4 +71,46 @@ public class CourseDaoImplTest extends AbstractTest {
 		course.setTutorId(tutorId);
 		return course;
 	}
+	
+	@Test
+	public void test04getCourseCountByTutor() {
+	    log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+	    CourseStat stat = dao.getCourseCountByTutor(1);
+	    Assert.assertNotNull(stat);
+	    log.debug(stat.toString());
+	}
+
+	@Test
+	public void test05getCourseCountByTutor2() {
+	    log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+	    Map<String, Object> param = new HashMap<>();
+	    param.put("tutor_id", 1);
+
+	    CourseStat stat = dao.getCourseCountByTutor2(param);
+	    Assert.assertNotNull(stat);
+	    log.debug(stat.toString());
+	}
+
+	@Test
+	public void test06getCourseCountByTutor3() {
+	    log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+	    Map<String, Object> param = new HashMap<>();
+	    param.put("tutor_id", 1);
+
+	    Map<String, Object> map = dao.getCourseCountByTutor3(param);
+	    Assert.assertNotNull(map);
+	    for(Entry<String, Object> e : map.entrySet()) log.debug(String.format("%s -> %s", e.getKey(), e.getValue()));
+	}
+
+	@Test
+	public void test07getCourseCountByTutor4() {
+	    log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+	    Map<String, Object> param = new HashMap<>();
+	    param.put("tutor_id", 1);
+
+	    Map<String, Object> map = dao.getCourseCountByTutor4(param);
+	    Assert.assertNotNull(map);
+	    for(Entry<String, Object> e : map.entrySet()) log.debug(String.format("%s -> %s", e.getKey(), e.getValue()));
+	}
+
 }
