@@ -3,8 +3,10 @@ package mybatis_study_annotation.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.One;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
@@ -40,5 +42,9 @@ public interface TutorDao {
 
 	@SelectProvider(type = TutorProvider.class, method = "selectTutorByJoinProv")
 	List<Tutor> selectTutorByJoinProv(Map<String, Object> map);
+
+	@InsertProvider(type=TutorProvider.class, method="insertTutor")
+	@Options(useGeneratedKeys=true, keyProperty="tutorId")
+	int insertTutor(Tutor tutor);
 
 }

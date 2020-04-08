@@ -49,4 +49,9 @@ public class TutorDaoImpl implements TutorDao {
 		return sqlSession.selectList(namespace + ".selectTutorByJoinProv", map);
 	}
 
+	@Override
+	public int insertTutor(Tutor tutor) {
+		return sqlSession.insert(namespace + ".insertTutor", tutor);
+	}
+
 }
