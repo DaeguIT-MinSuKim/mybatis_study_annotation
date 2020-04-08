@@ -61,4 +61,20 @@ public class TutorProvider {
 	        }
 	    }.toString();
 	}
+	
+	public String updateTutor(Tutor tutor) {
+	    return new SQL() {
+	       {
+	            UPDATE("TUTORS");
+	            if (tutor.getName() != null) {
+	                SET("NAME=#{name}");
+	            }
+	            if (tutor.getEmail() != null) {
+	                SET("EMAIL=#{email}");
+	            }
+	            WHERE("TUTOR_ID=#{tutorId}");
+	        }
+	    }.toString();
+	}
+
 }

@@ -12,6 +12,7 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.UpdateProvider;
 
 import mybatis_study_annotation.dto.Tutor;
 import mybatis_study_annotation.providers.TutorProvider;
@@ -46,5 +47,8 @@ public interface TutorDao {
 	@InsertProvider(type=TutorProvider.class, method="insertTutor")
 	@Options(useGeneratedKeys=true, keyProperty="tutorId")
 	int insertTutor(Tutor tutor);
+
+	@UpdateProvider(type=TutorProvider.class, method="updateTutor")
+	int updateTutor(Tutor tutor);
 
 }

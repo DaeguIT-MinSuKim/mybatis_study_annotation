@@ -54,4 +54,9 @@ public class TutorDaoImpl implements TutorDao {
 		return sqlSession.insert(namespace + ".insertTutor", tutor);
 	}
 
+	@Override
+	public int updateTutor(Tutor tutor) {
+		return sqlSession.update(namespace + ".updateTutor", tutor);
+	}
+
 }
