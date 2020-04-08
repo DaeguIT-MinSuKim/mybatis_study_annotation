@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.TutorMapper">
+	<resultMap type="Tutor" id="TutorResult">
+		<id property="tutorId" column="tutor_id" />
+		<result property="name" column="tutor_name" />
+		<result property="email" column="email" />
+		<association property="address" resultMap="mappers.AddressMapper.AddressResult"/>
+		<collection property="courses" resultMap="mappers.CourseMapper.CourseResult" />
+	</resultMap>
+</mapper>

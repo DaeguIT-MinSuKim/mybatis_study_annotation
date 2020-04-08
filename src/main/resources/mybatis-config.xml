@@ -27,6 +27,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<mapper resource="mappers/StudentMapper.xml"/>
 		<mapper resource="mappers/AddressMapper.xml"/>
+		<mapper resource="mappers/CourseMapper.xml"/>
+		<mapper resource="mappers/TutorMapper.xml"/>
 		<package name="mybatis_study_annotation.dao" />
 	</mappers>
 </configuration>
