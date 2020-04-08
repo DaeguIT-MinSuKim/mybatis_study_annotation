@@ -8,4 +8,9 @@
       <result property="phone" column="phone" />
       <result property="dob" column="dob" />
    </resultMap>
+
+	<resultMap id="StudentWithAddressResult" type="Student"	extends="StudentResult">
+		<association property="address"	resultMap="mappers.AddressMapper.AddressResult" />
+	</resultMap>
+   
 </mapper>

@@ -151,4 +151,22 @@ public class StudentDaoImplTest extends AbstractTest{
         }
     }
 
+    @Test
+    public void test11SelectStudentByAllForResultMapExtXML() {
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+        List<Student> lists = dao.selectStudentByAllForResultMapExtXML();
+        Assert.assertNotNull(lists);
+        for(Student std : lists) {
+            log.debug(std.toString());
+        }
+    }
+    
+    @Test
+    public void test12SelectStudentOneToOne(){
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+        Student student = dao.selectStudentOneToOne(1);
+        Assert.assertNotNull(student);
+        log.trace(student.toString());
+    }
+
 }

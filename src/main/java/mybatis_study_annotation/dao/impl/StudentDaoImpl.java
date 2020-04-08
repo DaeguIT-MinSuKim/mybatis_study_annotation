@@ -74,4 +74,14 @@ public class StudentDaoImpl implements StudentDao {
 		return sqlSession.selectList(namespace + ".selectStudentByAllForResultMapExt");
 	}
 
+	@Override
+	public List<Student> selectStudentByAllForResultMapExtXML() {
+		return sqlSession.selectList(namespace + ".selectStudentByAllForResultMapExtXML");
+	}
+
+	@Override
+	public Student selectStudentOneToOne(int studId) {
+		return sqlSession.selectOne(namespace + ".selectStudentOneToOne", studId);
+	}
+
 }
