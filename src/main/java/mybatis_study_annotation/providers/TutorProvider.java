@@ -77,4 +77,13 @@ public class TutorProvider {
 	    }.toString();
 	}
 
+	public String deleteTutor(Tutor tutor) {
+	    return new SQL() {
+	        {
+	            DELETE_FROM("TUTORS");
+	            WHERE("TUTOR_ID=#{tutorId}");
+	        }
+	    }.toString();
+	}
+
 }

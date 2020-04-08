@@ -3,6 +3,7 @@ package mybatis_study_annotation.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.DeleteProvider;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.One;
@@ -50,5 +51,8 @@ public interface TutorDao {
 
 	@UpdateProvider(type=TutorProvider.class, method="updateTutor")
 	int updateTutor(Tutor tutor);
+
+    @DeleteProvider(type=TutorProvider.class, method="deleteTutor")
+    int deleteTutor(Tutor tutor);
 
 }

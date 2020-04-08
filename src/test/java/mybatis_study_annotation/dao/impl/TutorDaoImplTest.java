@@ -124,4 +124,14 @@ public class TutorDaoImplTest extends AbstractTest {
         Assert.assertEquals(1, res);
     }
 
+    @Test
+    public void test08DeleteTutor() {
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+
+        Tutor tutor = new Tutor();
+        tutor.setTutorId(5);
+        int res = dao.deleteTutor(tutor);
+        Assert.assertEquals(1, res);
+    } 
+
 }
