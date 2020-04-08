@@ -89,4 +89,10 @@ public interface StudentDao {
 	})
 	Student selectStudentOneToOne(int studId);
 
+	/* 매퍼 애너테이션 - enum 타입 */
+	@Insert("insert into students(stud_id, name, email, phone, dob, gender) " 
+            + "values(#{studId}, #{name}, #{email}, #{phone}, #{dob}, #{gender})")
+	@Options(useGeneratedKeys = true, keyProperty = "studId")
+	int insertEnumStudent(Student student);
+
 }

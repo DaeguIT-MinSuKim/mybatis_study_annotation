@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import mybatis_study_annotation.AbstractTest;
+import mybatis_study_annotation.dto.Gender;
 import mybatis_study_annotation.dto.PhoneNumber;
 import mybatis_study_annotation.dto.Student;
 import mybatis_study_annotation.jdbc.MyBatisSqlSessionFactory;
@@ -167,6 +168,34 @@ public class StudentDaoImplTest extends AbstractTest{
         Student student = dao.selectStudentOneToOne(1);
         Assert.assertNotNull(student);
         log.trace(student.toString());
+    }
+
+    @Test
+    public void test13InsertEnumStudent() {
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+        Calendar newDate = GregorianCalendar.getInstance();
+        newDate.set(1990, 2, 28);
+        Student student = new Student();
+        student.setStudId(3);
+        student.setName("test");
+        student.setEmail("test@test.co.kr");
+        student.setDob(newDate.getTime());
+        student.setPhone(new PhoneNumber("010-1234-1234"));
+        student.setGender(Gender.FEMALE);
+        int res = dao.insertEnumStudent(student);
+        Assert.assertEquals(1, res);
+        
+        student.setStudId(4);
+        student.setName("test4");
+        student.setEmail("test4@test.co.kr");
+        student.setDob(newDate.getTime());
+        student.setPhone(new PhoneNumber("010-1234-1234"));
+        student.setGender(Gender.MALE);
+        int res1 = dao.insertEnumStudent(student);
+        Assert.assertEquals(1, res1);
+        
+        dao.deleteStudent(3);
+        dao.deleteStudent(4);
     }
 
 }

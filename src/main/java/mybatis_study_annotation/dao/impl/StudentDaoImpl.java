@@ -84,4 +84,9 @@ public class StudentDaoImpl implements StudentDao {
 		return sqlSession.selectOne(namespace + ".selectStudentOneToOne", studId);
 	}
 
+	@Override
+	public int insertEnumStudent(Student student) {
+		return sqlSession.insert(namespace + ".insertEnumStudent", student);
+	}
+
 }
