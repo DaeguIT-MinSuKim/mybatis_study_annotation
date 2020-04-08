@@ -2,6 +2,7 @@ package mybatis_study_annotation.dao.impl;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -196,6 +197,33 @@ public class StudentDaoImplTest extends AbstractTest{
         
         dao.deleteStudent(3);
         dao.deleteStudent(4);
+    }
+
+    @Test
+    public void test14SelectAllStudentByParam() {
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+        Student student = dao.selectAllStudentByParam("Timothy", "timothy@gmail.com");
+        Assert.assertNotNull(student);
+        log.trace(student.toString());
+    }
+    @Test
+    public void test15SelectAllStudentByStudent() {
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+        Student std = new Student();
+        std.setName("Timothy");
+        std.setEmail("timothy@gmail.com");
+        Student student = dao.selectAllStudentByStudent(std);
+        Assert.assertNotNull(student);
+        log.trace(student.toString());
+    }
+    @Test
+    public void test16SelectAllStudentByMap() {
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+        Map<String, String> maps = new HashMap<>();
+        maps.put("name", "Timothy");
+        maps.put("email", "timothy@gmail.com");
+        Student student = dao.selectAllStudentByMap(maps);
+        Assert.assertNotNull(student);
     }
 
 }
