@@ -115,4 +115,9 @@ public interface StudentDao {
 	@ResultMap("mappers.StudentMapper.StudentResult")
 	Student selectAllStudentByMap(Map<String, String> map);
 
+	/* 매퍼 애너테이션 - ResultSet 처리방식의 재정의 */
+	@Select("select stud_id, name, email, phone, dob from students where stud_id=#{studId}")
+    @ResultMap("mappers.StudentMapper.StudentResult")
+	Map<Integer, String> selectStudentForMap(int studId);
+
 }

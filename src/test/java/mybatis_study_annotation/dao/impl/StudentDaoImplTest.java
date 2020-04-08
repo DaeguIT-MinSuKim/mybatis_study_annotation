@@ -226,4 +226,15 @@ public class StudentDaoImplTest extends AbstractTest{
         Assert.assertNotNull(student);
     }
 
+    @Test
+    public void test17SelectStudentForMap() {
+        log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+        Map<Integer, String> map = dao.selectStudentForMap(1);
+        Assert.assertNotNull(map);
+        log.trace("map.size()" + map.size());    
+        for(Entry<Integer, String>entry : map.entrySet()){
+            log.debug(String.format("%s - %s", entry.getKey(), entry.getValue()));
+        }
+    } 
+
 }
